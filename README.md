@@ -111,20 +111,27 @@ To get a local copy of ChoreSplitter up and running, follow these simple steps.
 
 ### Prerequisites
 
-You must have [Java 16](https://adoptopenjdk.net/) and an [Apache Tomcat v10.0.6](http://tomcat.apache.org/) server installed and running
+You must have [Node.js](https://nodejs.org/en/) installed on your machine.
 
 ### Installation
 
-_Below are the necessary steps needed to run this project. All additional dependencies can be accessed from the `pom.xml`._
+_Below are the necessary steps needed to run this project._
 
 1. Clone the repo
    ```sh
    git clone https://github.com/TechnoVisionDev/ChoreSplitter.git
    ```
-2. Create a free MongoDB cluster at [https://www.mongodb.com](https://www.mongodb.com/)
-4. Add your cluster URI as an environment variable
+2. Create a [MongoDB](https://www.mongodb.com/) cluster and add your URI as an enviornment variable
    ```env
-   DATABASE="insert-mongodb-uri";
+   DATABASE="your-mongodb-uri";
+   ```
+5. Navigate to the project's root directory and run:
+   ```sh
+   npm install
+   ```
+6. You can now run the server using node:
+   ```sh
+   node server.js
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
