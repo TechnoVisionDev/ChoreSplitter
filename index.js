@@ -1,23 +1,32 @@
+// Setup Express
 const express = require('express');
 const path = require('path');
 const app = express();
 const port = 3000;
 
+// Set 'public' and 'views' folders
+app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 
-app.use(express.static(__dirname + '/views'));
-
+// Home page redirect
 app.get('/', (req, res) => {
     res.render('home', { header: 'Home Page'});
 })
 
-app.get('/auth', (req, res) => {
-    res.send("LOGGED IN!");
+// Features page redirect
+app.get('/features', (req, res) => {
+    res.render('features');
 })
 
+// Login and Registration
+app.get('/auth', (req, res) => {
+    res.send("Successfully logged in!");
+})
+
+// Error 404 page redirect
 app.get('*', (req, res) => {
-    res.render('error404', { url: req.originalUrl});
+    res.render('error', { url: req.originalUrl});
 })
 
 app.listen(port, () => {

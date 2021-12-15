@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Roboto:wght@300');
+
+body {
+	margin: 0;
+   	font-family: Roboto, sans-serif;
+   	font-weight: 300;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    padding: 7rem 30px 0 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+nav {
+	background-color: #bb0000;
+	display: flex;
+    padding: 10px 30px 10px 30px;
+    border-bottom: 1px solid #bb0000;
+    position: fixed;
+  	top: 0;
+  	z-index: 1000;
+  	width: calc(100% - 60px);
+}
+
+nav a {
+    text-decoration: none !important;
+    color: black;
+}
+
+#nav-brand {
+	font-family: Outfit, sans-serif;
+	font-weight: 800;
+	color: white;
+	font-size: 30px;
+}
+
+#nav-wrapper {
+	margin-left: auto;
+}
+
+#login-btn {
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 20px;
+    height: 37px;
+    width: 85px;
+    font-size: 0.95rem;
+}
+
+#login:hover {
+	background-color: #8c0000;
+}
+
+.nav-btn {
+	color: white;
+	font-size: 22px;
+	margin-right: 15px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.header {
+	font-family: Outfit, sans-serif;
+	font-weight: 800;
+	font-size: 3rem;
+}
+
+.sub-header {
+    font-size: 25px;
+}
+
+footer {
+	margin-top: auto;
+}
+
+footer > span {
+    position: absolute;
+    padding-top: 13%;
+    padding-left: 5%;
+    color: white;
+}
+
+footer > svg {
+    display: block;
+}
+
+code {
+    background-color: lightgray;
+}
