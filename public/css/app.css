@@ -51,8 +51,9 @@ nav a {
     font-size: 0.95rem;
 }
 
-#login:hover {
+#login-btn:hover {
 	background-color: #8c0000;
+    cursor: pointer;
 }
 
 .nav-btn {

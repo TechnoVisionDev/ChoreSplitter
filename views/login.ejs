@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <%- include('partials/navbar') %>
+    <main>
+        <div class="login-form-container">
+            <div>
+                <form class="login-form" action="login" method="POST">
+                    <div>
+                        <h1 class="form-header">Login</h1>
+                        <% if( locals.loginError) { %> 
+                            <p class="error-message"><%=loginError%></p>
+                        <% } else { %> 
+                            <p class="error-message" style="visibility: hidden;">invisible</p>
+                        <% } %> 
+                    </div>
+                    <label>Email</label>
+                    <input type="email" class="textbox" name="email" required>
+                    <label>Password</label>
+                    <input type="password" class="textbox" name="password" autoComplete="current-password" required pattern="\S(.*\S)?">
+                    <button type="submit" class="login-button"><i class="fas fa-sign-in-alt"></i>Sign In</button>
+                </form>
+                <p class="divider"></p>
+            </div>
+            <form class="login-form" action="register" method="POST">
+                    <div>
+                        <h1 class="form-header">Register</h1>
+                        <% if(locals.registerError) { %> 
+                            <p class="error-message"><%=registerError%></p>
+                        <% } else { %> 
+                            <p class="error-message" style="visibility: hidden;">invisible</p>
+                        <% } %> 
+                    </div>
+                <label>Email</label>
+                <input type="text" class="textbox" name="email" required>
+                <label>Name</label>
+                <input type="text" class="textbox" name="name" required pattern="\S(.*\S)?">
+                <label>Password</label>
+                <input type="password" class="textbox" name="password" autoComplete="new-password" required pattern="\S(.*\S)?">
+                <label>Confirm Password</label>
+                <input type="password" class="textbox" name="verify" autoComplete="new-password" required pattern="\S(.*\S)?">
+                <label>Profile Picture</label>
+                <input type="text" class="textbox" name="avatar" placeholder="Optional">
+                <div>
+                    <label class="terms">
+                        <input type="checkbox" name="terms" class="terms" required>
+                        I have read and agree to all terms and conditions.
+                    </label>
+                </div>
+                <button type="submit" class="login-button"><i class="fas fa-user-plus"></i>Create Account</button>
+            </form>
+        </div>
+    </main>
+    <%- include('partials/footer') %>
+</body>
+</html>
