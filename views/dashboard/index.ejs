@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('partials/head') %>
+    <%- include('../partials/head') %>
     <link rel="stylesheet" href="/stylesheets/dashboard.css">
 </head>
 <body>
-	<%- include('partials/navbar') %>
+	<%- include('../partials/navbar') %>
     <main>
     	<div id="dashboard-header">
     		<p class="dashboard-code"><b>Group:</b> <%=group%></p>
@@ -19,24 +19,26 @@
     			<button id="cant-add-chore">Chore list is full. Please complete or delete chores in order to add new ones.</button>
             <% } %> 
 	    	<div class="chore-container">
-                <% for (let chore of data) { %> 
+                <% for (let i=0; i<data.length; i++) {
+					let chore = data[i];
+				%> 
 	    			<div class="chore">
 	    				<div>
-	    					<h1 class="chore-name">${chore.name}</h1>
-	    					<p class="chore-data">${chore.description}</p>
+	    					<h1 class="chore-name"><%=chore.name%></h1>
+	    					<p class="chore-data"><%=chore.description%></p>
 	    				</div>
                         <% if (chore.claimed) { %> 
 					    	<img class="claimed-img" src="${avatars[chore.claimed]}" alt="A user's profile picture">
                         <% } %>
 			    		<aside>
-			    			<p class="chore-data">${chore.points} Points</p>
+			    			<p class="chore-data"><%=chore.points%> Points</p>
 			    			<form id="chore-buttons" action="chore" method="POST">
                                 <% if (!chore.claimed) { %> 
-			    					<button id="claim-chore-button" name="claim" value="${theCount.index}"><i class="fas fa-user-check"></i></button>
-			    					<button id="delete-chore-button" name="delete" value="${theCount.index}"><i class="fas fa-times"></i></button>
-                                <% } else if (chore.claimed && chore.claimed === email) { %>
-			    					<button id="finish-chore-button" name="finish" value="${theCount.index}"><i class="fas fa-check"></i></button>
-			    					<button id="delete-chore-button" name="unclaim" value="${theCount.index}"><i class="fas fa-times"></i></button>
+			    					<button id="claim-chore-button" name="claim" value="<%=i%>"><i class="fas fa-user-check"></i></button>
+			    					<button id="delete-chore-button" name="delete" value="<%=i%>"><i class="fas fa-times"></i></button>
+                                <% } else if (chore.claimed === email) { %>
+			    					<button id="finish-chore-button" name="finish" value="<%=i%>"><i class="fas fa-check"></i></button>
+			    					<button id="delete-chore-button" name="unclaim" value="<%=i%>"><i class="fas fa-times"></i></button>
                                 <% } %>
 			    			</form>
 			    		</aside>
@@ -59,6 +61,6 @@
     		<img src="assets/dashboard/decoration2.png" alt="Man doing chores" id="chores-decoration">
     	</div>
     </main>
-    <%- include('partials/footer') %>
+    <%- include('../partials/footer') %>
 </body>
 </html>

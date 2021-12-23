@@ -1,12 +1,3 @@
-.add-chore-form {
-	display: inline-block;
-	text-align: center;	
-}
-
-.page-centered {
-	align-items: center;
-}
-
 #dashboard-header {
 	display: flex;
 	justify-content: space-between;
@@ -183,3 +174,25 @@ aside {
 #finish-chore-button {
 	background-color: green;
 }
+
+.add-chore-form {
+	display: inline-block;
+	text-align: center;	
+}
+
+.create-button {
+	background-color: gold;
+	color: black;
+	font-size: 15px;
+	height: 40px;
+	width: 385px;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.create-button:hover {
+	background-color: #edcb09;
+}
+
+

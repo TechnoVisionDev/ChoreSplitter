@@ -75,6 +75,8 @@ nav a {
 
 .sub-header {
     font-size: 25px;
+    margin-top: 0.25rem;
+    margin-bottom: 1.5rem;
 }
 
 .textbox {
@@ -95,6 +97,10 @@ nav a {
 
 #chores-decoration {
 	width: 20%;
+}
+
+.divider {
+    border-bottom: 1px solid #ebebeb;
 }
 
 footer {

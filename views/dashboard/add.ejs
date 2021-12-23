@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+    <link rel="stylesheet" href="/stylesheets/dashboard.css">
+    <link rel="stylesheet" href="/stylesheets/group.css">
+</head>
+<body>
+	<%- include('../partials/navbar') %>
+    <main class="center">
+    	<h1 class="header">Add Chore!</h1>
+    	<p class="sub-header">Add a chore to your housing group. Time to get cleaning!</p>
+    	<div class="group-body">
+    		<img src="/assets/group/decoration1.png" alt="Woman doing chores" id="chores-decoration">
+	    	<div class="group-forms">
+		    	<form class="add-chore-form" action="/dashboard/add" method="POST">
+		    		<input type="text" class="textbox" name="name" placeholder="Chore Name" required>
+		    		<input type="text" class="textbox" class="add-chore-form" name="description" placeholder="Chore Description" required>
+		    		<input type="number" class="textbox" name="points" placeholder="Point Value of Chore" min="1" max="100" required>
+		    		<p class="divider"></p>
+		    		<button type="submit" class="create-button" class="add-chore-form">Add Chore!</button>
+                    <% if (locals.choreError) { %> 
+			   			<p class="error-message" style="margin-top:15px;">The chore you entered was invalid!</p>
+                    <% } else { %> 
+			   			<p class="error-message" style="visibility: hidden;">invisible</p>
+                    <% } %>
+		    	</form>
+	    	</div>
+	    	<img src="/assets/group/decoration2.png" alt="Man doing chores" id="chores-decoration">
+    	</div>
+    </main>
+    <%- include('../partials/footer') %>
+</body>
+</html>
