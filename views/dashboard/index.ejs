@@ -13,7 +13,7 @@
             <p class="dashboard-code" style="visibility: hidden;"><b>Group:</b> <%=group%></p>
     	</div>
         <% if (locals.data) { %> 
-            <% if (data.size() < 50) { %> 
+            <% if (data.length < 50) { %> 
     			<button id="add-chore-button" onclick="window.location='/dashboard/add';">Add Chore</button>
             <% } else { %> 
     			<button id="cant-add-chore">Chore list is full. Please complete or delete chores in order to add new ones.</button>

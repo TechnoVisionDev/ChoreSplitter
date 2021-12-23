@@ -10,7 +10,8 @@ module.exports.renderDashboard = catchAsync(async (req, res) => {
 
     const avatar = user.avatar || 'https://i.stack.imgur.com/34AD2.jpg';
     const group = req.session.group;
-    res.render('dashboard', {avatar, group, name: user.name, points: user.points});
+    const doc = await Group.findOne({group});
+    res.render('dashboard', {data: doc.chores, avatar, group, name: user.name, points: user.points});
 });
 
 // Render add chore form
@@ -29,8 +30,8 @@ module.exports.addChore = async (req, res) => {
         const chore = {name: name.trim(), description: description.trim(), points};
 
         // Add chore to database
-        const code = req.session.group;
-        await Group.updateOne({group: code}, {$push: {chores: chore}});
+        const group = req.session.group;
+        await Group.updateOne({group}, {$push: {chores: chore}});
         res.redirect('/dashboard');
     } catch (e) {
         res.render('dashboard/add', {choreError: true});
