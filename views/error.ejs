@@ -6,8 +6,13 @@
 <body>
     <%- include('partials/navbar') %>
     <main>
-        <h1 class="header">Page Not Found</h1>
-        <p class="sub-header">Sorry, the page <code><%=url%></code> could not be found.</p>
+        <% if (locals.url) { %> 
+            <h1 class="header">Page Not Found</h1>
+            <p class="sub-header">Sorry, the page <code><%=url%></code> could not be found.</p>
+        <% } else { %> 
+            <h1 class="header">Error 505</h1>
+            <p class="sub-header">Sorry, an error occurred on our server!</p> 
+        <% } %> 
     </main>
     <%- include('partials/footer') %>
 </body>

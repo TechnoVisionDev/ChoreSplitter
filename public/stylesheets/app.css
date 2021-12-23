@@ -74,6 +74,22 @@ nav a {
     font-size: 25px;
 }
 
+.textbox {
+	padding-left: 8px;
+    margin-bottom: 5px;
+    height: 35px;
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid #8c8989;
+    border-radius: 3px;
+}
+
+.error-message {
+	color: #bb0000;
+	font-size: 12px;
+	margin: 0;
+}
+
 footer {
 	margin-top: auto;
 }

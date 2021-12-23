@@ -1,0 +1,49 @@
+#group-forms {
+	margin-top: 30px;
+}
+
+.join-group-form {
+	display: flex;
+	justify-content: center;
+	margin-top: 5px;
+}
+
+.join-button {
+	background-color: #bb0000;
+	color: white;
+	font-size: 15px;
+	height: 40px;
+	width: 225px;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	margin-bottom: 0px;
+}
+
+.create-button {
+	background-color: gold;
+	color: black;
+	font-size: 15px;
+	height: 40px;
+	width: 385px;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.create-button:hover {
+	background-color: #edcb09;
+}
+
+.divider {
+	border-bottom: 1px solid #ebebeb;
+}
+
+#chores-decoration {
+	width: 20%;
+}
+
+#group-body {
+	display: flex;
+	justify-content: space-evenly;
+}

@@ -17,13 +17,13 @@ module.exports.register = async (req, res) => {
         }
 
         // Create new user document
-        const user = new User({ email : email, password : password, name : name, avatar : avatar});
+        const user = new User({ email, password, name, avatar});
         try { await user.save() }
         catch (e) { throw new Error('*That email address is already in use.'); }
 
         // Create session and redirect
         req.session.email = email;
-        res.redirect('/');
+        res.redirect('group');
     } catch (e) {
         res.render('auth', {registerError: e.message});
     }
@@ -38,18 +38,23 @@ module.exports.login = async (req, res) => {
         }
 
         // Verify user with database
-        const user = await User.findOne({email : email, password : password}).lean();
+        const user = await User.findOne({email, password}).lean();
         if (!user) { throw new Error('*Invalid email and password.'); }
 
         // Create session and redirect
         req.session.email = email;
-        res.redirect('/');
+        if (user.group != null) {
+            req.session.group = user.group;
+            return res.redirect('dashboard');
+        }
+        res.redirect('group');
     } catch (e) {
-        res.render('auth', {loginError: e.message});
+        return res.render('auth', {loginError: e.message});
     }
 }
 
 module.exports.logout = (req, res) => {
     req.session.email = null;
+    req.session.group = null;
     res.redirect('/');
 }

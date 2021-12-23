@@ -100,6 +100,7 @@ Below is a comprehensive list of the frameworks and libraries used to build Chor
 * [Mongoose](https://mongoosejs.com/docs/)
 * [EJS](https://ejs.co/)
 * [DotEnv](https://www.npmjs.com/package/dotenv)
+* [Short Unique ID](https://www.npmjs.com/package/short-unique-id)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
