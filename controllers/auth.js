@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
 // Redirects to the homepage
@@ -17,7 +18,8 @@ module.exports.register = async (req, res) => {
         }
 
         // Create new user document
-        const user = new User({ email, password, name, avatar});
+        const encryptedPass = await bcrypt.hash(password, 10);
+        const user = new User({ email, password: encryptedPass, name, avatar});
         try { await user.save() }
         catch (e) { throw new Error('*That email address is already in use.'); }
 
@@ -38,8 +40,10 @@ module.exports.login = async (req, res) => {
         }
 
         // Verify user with database
-        const user = await User.findOne({email, password}).lean();
+        const user = await User.findOne({email}).lean();
         if (!user) { throw new Error('*Invalid email and password.'); }
+        const match = await bcrypt.compare(password, user.password);
+        if (!match) { throw new Error('*Invalid email and password.'); }
 
         // Create session and redirect
         req.session.email = email;

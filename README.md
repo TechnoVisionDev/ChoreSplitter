@@ -104,6 +104,7 @@ Below is a comprehensive list of the frameworks and libraries used to build Chor
 * [Short Unique ID](https://www.npmjs.com/package/short-unique-id)
 * [Method Override](https://www.npmjs.com/package/method-override)
 * [Helmet](https://www.npmjs.com/package/helmet)
+* [Bcrypt](https://www.npmjs.com/package/bcrypt)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

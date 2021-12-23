@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
+
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser')
@@ -9,7 +13,6 @@ const helmet = require('helmet');
 const authRoutes = require('./routes/auth');
 const groupRoutes = require('./routes/group');
 const dashboardRoutes = require('./routes/dashboard');
-require('dotenv').config();
 
 // Connect to MongoDB Database
 const mongoUrl = process.env.DATABASE;
