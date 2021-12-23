@@ -5,13 +5,15 @@ const session = require('express-session');
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo');
 const methodOverride = require('method-override');
+const helmet = require('helmet');
 const authRoutes = require('./routes/auth');
 const groupRoutes = require('./routes/group');
 const dashboardRoutes = require('./routes/dashboard');
 require('dotenv').config();
 
 // Connect to MongoDB Database
-mongoose.connect(process.env.DATABASE);
+const mongoUrl = process.env.DATABASE;
+mongoose.connect(mongoUrl);
 mongoose.connection.on('error', console.error.bind(console, 'WARNING: Database Connection Error!'));
 mongoose.connection.once('open', () => console.log('Database Connected'))
 
@@ -21,6 +23,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
+app.use(helmet({contentSecurityPolicy: false}));
 app.use(bodyParser.json());                        // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true})); // to support URL-encoded bodies
 
@@ -28,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true})); // to support URL-encoded bod
 const oneWeek = 1000 * 60 * 60 * 24 * 7;
 const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
 app.use(session({
-    store: MongoStore.create({ mongoUrl: process.env.DATABASE }),
+    store: MongoStore.create({ mongoUrl }),
     name: 'session',
     secret,
     resave: false,

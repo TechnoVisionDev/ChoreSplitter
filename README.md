@@ -103,6 +103,7 @@ Below is a comprehensive list of the frameworks and libraries used to build Chor
 * [DotEnv](https://www.npmjs.com/package/dotenv)
 * [Short Unique ID](https://www.npmjs.com/package/short-unique-id)
 * [Method Override](https://www.npmjs.com/package/method-override)
+* [Helmet](https://www.npmjs.com/package/helmet)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
