@@ -5,6 +5,7 @@ const session = require('express-session');
 const mongoose = require('mongoose');
 const Group = require('./models/group');
 const authenticator = require('./routes/auth')
+require('dotenv').config();
 
 // Setup Express Application
 const app = express();
@@ -30,7 +31,7 @@ app.use((req, res, next) => {
 })
 
 // Connect to MongoDB Database
-mongoose.connect('');
+mongoose.connect(process.env.DATABASE);
 
 // Set Page Routes
 app.use('/', authenticator.router);
