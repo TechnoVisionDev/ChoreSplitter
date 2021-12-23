@@ -95,12 +95,14 @@ Here's why:
 
 Below is a comprehensive list of the frameworks and libraries used to build ChoreSplitter.
 
+* [EJS](https://ejs.co/)
 * [Node.js](https://nodejs.org/en/)
 * [Express](https://expressjs.com/)
 * [Mongoose](https://mongoosejs.com/docs/)
-* [EJS](https://ejs.co/)
+* [Connect Mongo](https://www.npmjs.com/package/connect-mongo)
 * [DotEnv](https://www.npmjs.com/package/dotenv)
 * [Short Unique ID](https://www.npmjs.com/package/short-unique-id)
+* [Method Override](https://www.npmjs.com/package/method-override)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

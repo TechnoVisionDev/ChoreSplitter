@@ -3,6 +3,8 @@ const path = require('path');
 const bodyParser = require('body-parser')
 const session = require('express-session');
 const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo');
+const methodOverride = require('method-override');
 const authRoutes = require('./routes/auth');
 const groupRoutes = require('./routes/group');
 const dashboardRoutes = require('./routes/dashboard');
@@ -10,13 +12,15 @@ require('dotenv').config();
 
 // Connect to MongoDB Database
 mongoose.connect(process.env.DATABASE);
+mongoose.connection.on('error', console.error.bind(console, 'WARNING: Database Connection Error!'));
+mongoose.connection.once('open', () => console.log('Database Connected'))
 
 // Setup Express Application
 const app = express();
-app.set('trust proxy', 1);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
 app.use(bodyParser.json());                        // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true})); // to support URL-encoded bodies
 
@@ -24,10 +28,17 @@ app.use(bodyParser.urlencoded({ extended: true})); // to support URL-encoded bod
 const oneWeek = 1000 * 60 * 60 * 24 * 7;
 const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
 app.use(session({
+    store: MongoStore.create({ mongoUrl: process.env.DATABASE }),
+    name: 'session',
     secret,
-    cookie: { maxAge: oneWeek},
+    resave: false,
     saveUninitialized: false,
-    resave: false
+    cookie: {
+        httpOnly: true,
+        //secure: true,
+        expires: Date.now() + oneWeek,
+        maxAge: oneWeek
+    }
 }));
 
 app.use((req, res, next) => {
@@ -60,5 +71,5 @@ app.use((err, req, res, next) => {
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.log(`ChoreSplitter listening at http://localhost:${port}`);
+    console.log(`Serving on port ${port}`)
 })
