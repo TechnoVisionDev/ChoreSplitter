@@ -6,8 +6,58 @@
 </head>
 <body>
 	<%- include('partials/navbar') %>
-    <main class="page-centered">
-    	<h1 class="header">Dashboard</h1>
+    <main>
+    	<div id="dashboard-header">
+    		<p class="dashboard-code"><b>Group:</b> <%=group%></p>
+    		<h1 class="header">Dashboard</h1>
+            <p class="dashboard-code" style="visibility: hidden;"><b>Group:</b> <%=group%></p>
+    	</div>
+        <% if (locals.data) { %> 
+            <% if (data.size() < 50) { %> 
+    			<button id="add-chore-button" onclick="window.location='/dashboard/add';">Add Chore</button>
+            <% } else { %> 
+    			<button id="cant-add-chore">Chore list is full. Please complete or delete chores in order to add new ones.</button>
+            <% } %> 
+	    	<div class="chore-container">
+                <% for (let chore of data) { %> 
+	    			<div class="chore">
+	    				<div>
+	    					<h1 class="chore-name">${chore.name}</h1>
+	    					<p class="chore-data">${chore.description}</p>
+	    				</div>
+                        <% if (chore.claimed) { %> 
+					    	<img class="claimed-img" src="${avatars[chore.claimed]}" alt="A user's profile picture">
+                        <% } %>
+			    		<aside>
+			    			<p class="chore-data">${chore.points} Points</p>
+			    			<form id="chore-buttons" action="chore" method="POST">
+                                <% if (!chore.claimed) { %> 
+			    					<button id="claim-chore-button" name="claim" value="${theCount.index}"><i class="fas fa-user-check"></i></button>
+			    					<button id="delete-chore-button" name="delete" value="${theCount.index}"><i class="fas fa-times"></i></button>
+                                <% } else if (chore.claimed && chore.claimed === email) { %>
+			    					<button id="finish-chore-button" name="finish" value="${theCount.index}"><i class="fas fa-check"></i></button>
+			    					<button id="delete-chore-button" name="unclaim" value="${theCount.index}"><i class="fas fa-times"></i></button>
+                                <% } %>
+			    			</form>
+			    		</aside>
+	    			</div>
+                <% } %>
+	    	</div>
+    	<% } else { %> 
+    		<button id="add-first-chore-button" onclick="window.location='/dashboard/add';">Add Chore</button>
+        <% } %> 
+    	<p class="divider" id="dashboard-separator"></p>
+    	<div id="bottom-dashboard">
+    		<img src="assets/dashboard/decoration1.png" alt="Man doing chores" id="chores-decoration">
+    		<div id="profile">
+	    		<img class="profile-img" src="<%=avatar%>" alt="Your profile picture" onclick="window.location='settings';">
+	    		<h1 style="margin-bottom: 0px;"><%=name%></h1>
+	    		<p><%=points%> Points</p>
+	    		<button id="leaderboard-button" onclick="window.location='leaderboard';">Leaderboard</button>
+	    		<button id="chat-button" onclick="window.location='chat';">Group Chat</button>
+    		</div>
+    		<img src="assets/dashboard/decoration2.png" alt="Man doing chores" id="chores-decoration">
+    	</div>
     </main>
     <%- include('partials/footer') %>
 </body>

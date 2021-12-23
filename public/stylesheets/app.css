@@ -10,8 +10,11 @@ body {
 main {
     padding: 7rem 30px 0 30px;
     display: flex;
-    align-items: center;
     flex-direction: column;
+}
+
+.center {
+    align-items: center;
 }
 
 nav {
@@ -88,6 +91,10 @@ nav a {
 	color: #bb0000;
 	font-size: 12px;
 	margin: 0;
+}
+
+#chores-decoration {
+	width: 20%;
 }
 
 footer {

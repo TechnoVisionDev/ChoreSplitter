@@ -5,7 +5,11 @@ const catchAsync = require('../utils/catchAsync');
 
 // Render group form
 module.exports.renderForm = (req, res) => {
-    res.render('group');
+    if (!req.session.group) {
+        return res.render('group');
+    }
+    // User is already in a group
+    res.redirect('dashboard');
 };
 
 // Create a new group

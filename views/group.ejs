@@ -6,18 +6,18 @@
 </head>
 <body>
 	<%- include('partials/navbar') %>
-    <main class="page-centered">
+    <main class="center">
     	<h1 class="header">Select a Housing Group!</h1>
     	<p class="sub-header">Enter a group code or create your own.</p>
     	<div id="group-body">
     		<img src="/assets/group/decoration1.png" alt="Woman doing chores" id="chores-decoration">
 	    	<div id="group-forms">
-                <% if( locals.groupError) { %> 
+                <% if(locals.groupError) { %> 
                     <p class="error-message"><%=groupError%></p>
                 <% } else { %> 
                     <p class="error-message" style="visibility: hidden;">invisible</p>
                 <% } %> 
-		    	<form class="join-group-form" id="groupcode" action="/group/join" method="POST">
+		    	<form class="join-group-form" action="/group/join" method="POST">
 		    		<input type="text" class="textbox" name="code" placeholder="Group Code" maxlength="10" required>
 		    		<button type="submit" class="join-button"><i class="fas fa-user-plus"></i> Join Group</button>
 		    	</form>

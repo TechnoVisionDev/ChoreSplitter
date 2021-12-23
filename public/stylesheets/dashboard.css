@@ -1,0 +1,185 @@
+.add-chore-form {
+	display: inline-block;
+	text-align: center;	
+}
+
+.page-centered {
+	align-items: center;
+}
+
+#dashboard-header {
+	display: flex;
+	justify-content: space-between;
+}
+
+.dashboard-code  {
+	font-family: Outfit, sans-serif;
+	font-weight: 400;
+	font-size: 25px;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.dashboard-code > b {
+	font-weight: 800;
+}
+
+.chore-container {
+	display: grid;
+	overflow-y: scroll;
+	max-height: 655px;
+	grid-column-gap: 50px;
+	grid-template-rows: auto;
+	background-color: #ebebeb;
+	padding: 10px;
+	margin: 0 250px 0 250px;
+	border-radius: 3px;
+}
+
+.chore {
+	display: flex;
+	justify-content: space-between;
+	background-color: #c2c0c0;
+  	border: 1px solid #c2c0c0;
+  	padding: 20px;
+  	margin: 5px 0 5px 0;
+  	border-radius: 8px;
+  	font-family: Outfit, sans-serif;
+}
+
+.chore-name {
+	margin: 0;
+	font-weight: 600;
+  	font-size: 28px;
+  	text-align: left;
+}
+
+.chore-data {
+	margin: 0;
+	font-weight: 400;
+  	font-size: 18px;
+  	text-align: left;
+}
+
+.claimed-img {
+	height: 3.2rem;
+    width: 3.2rem;
+    border: 3px solid #515257;;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: 25px;
+}
+
+#profile {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column;
+}
+
+#bottom-dashboard {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.profile-img {
+	height: 8rem;
+    width: 8rem;
+    border: 5px solid #515257;;
+    border-radius: 50%;
+    cursor: pointer;	
+}
+
+#add-chore-button, #cant-add-chore, #add-first-chore-button {
+	background-color: #bb0000;
+	color: white;
+	font-size: 15px;
+	height: 30px;
+	width: 200px;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	margin: 0 250px 5px auto;
+}
+
+#cant-add-chore{
+	width: 300px;
+	height: 50px;
+	cursor:auto;
+}
+
+#add-first-chore-button {
+	width: 300px;
+	margin: auto;
+}
+
+#add-chore-button:hover, #add-first-chore-button:hover {
+	background-color: #8c0000;
+}
+
+#leaderboard-button, #chat-button {
+	background-color: gold;
+	color: black;
+	font-size: 15px;
+	height: 40px;
+	width: 437px;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+#leaderboard-button:hover {
+	background-color: #edcb09;
+}
+
+#chat-button {
+	background-color: #bb0000;
+	color: white;
+	margin-top: 15px;
+}
+
+#chat-button:hover {
+	background-color: #8c0000;
+}
+
+#dashboard-separator {
+	margin: 40px 250px 40px 250px;
+	border-width: 3px;
+}
+
+aside {
+	grid-area: aside;
+}
+
+#chore-buttons {
+	display: flex;
+	justify-content: center;
+	margin-top: 15px;
+}
+
+#claim-chore-button, #finish-chore-button {
+	background-color: #2e8cff;
+	color: white;
+	font-size: 15px;
+	height: 20px;
+	width: 30px;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	margin-right: 10px;
+}
+
+#delete-chore-button {
+	background-color: #bb0000;
+	color: white;
+	font-size: 15px;
+	height: 20px;
+	width: 30px;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+#finish-chore-button {
+	background-color: green;
+}
