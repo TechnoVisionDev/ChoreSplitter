@@ -2,7 +2,7 @@
     <nav>
         <a href="/" id="nav-brand">ChoreSplitter!</a>
       <div id="nav-wrapper">
-          <% if (locals.session.user) { %> 
+          <% if (session.email) { %> 
             <i class="nav-btn fas fa-clipboard-list" onclick="window.location='dashboard';"></i>
             <i class="nav-btn far fa-chart-bar" onclick="window.location='leaderboard';"></i>
             <i class="nav-btn far fa-comments" onclick="window.location='chat';"></i>

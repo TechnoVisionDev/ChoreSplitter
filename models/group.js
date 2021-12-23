@@ -10,5 +10,4 @@ const groupSchema = new mongoose.Schema({
     chores: [String]
 });
 
-const Group = mongoose.model('Group', groupSchema);
-module.exports = Group;
+module.exports = mongoose.model('Group', groupSchema);
