@@ -99,6 +99,7 @@ Below is a comprehensive list of the frameworks and libraries used to build Chor
 * [Express](https://expressjs.com/)
 * [Mongoose](https://mongoosejs.com/docs/)
 * [EJS](https://ejs.co/)
+* [DotEnv](https://www.npmjs.com/package/dotenv)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -123,15 +124,19 @@ _Below are the necessary steps needed to run this project._
    ```
 2. Create a [MongoDB](https://www.mongodb.com/) cluster and add your URI as an enviornment variable
    ```env
-   DATABASE="your-mongodb-uri";
+   DATABASE=your-mongodb-uri;
    ```
-5. Navigate to the project's root directory and run:
-   ```sh
-   npm install
+2. Add a custom secret key for user sessions as an environment variable
+   ```env
+   SECRET=your-secret-key;
+   ```
+5. (Optional) Add a custom port number as an environment variable (default is 3000)
+   ```env
+   PORT=your-port-number;
    ```
 6. You can now run the server using node:
    ```sh
-   node server.js
+   node app.js
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
