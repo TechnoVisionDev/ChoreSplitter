@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
     },
     avatar: {
         type: String,
-        default: 'https://isobarscience.com/wp-content/uploads/2020/09/default-profile-picture1.jpg'
+        default: 'https://i.stack.imgur.com/34AD2.jpg'
     },
     group: {
         type: String,

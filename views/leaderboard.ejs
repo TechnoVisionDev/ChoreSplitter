@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %>
+    <link rel="stylesheet" href="/stylesheets/dashboard.css">
+    <link rel="stylesheet" href="/stylesheets/leaderboard.css">
+</head>
+<body>
+    <%- include('partials/navbar') %>
+    <main class="center">
+    	<h1 class="header">Leaderboard</h1>
+    	<div class="leaderboard-container">
+            <% for (let i=0; i<data.length; i++) { 
+                let user = data[i];
+            %> 
+	    		<div class="leaderboard-entry">
+	    				<img class="leaderboard-img" src="<%=user.avatar%>" alt="A user's profile picture">
+	    			    <div>
+	    					<h1 class="chore-name"><%=user.name%></h1>
+	    					<p class="chore-data"><%=user.points%> Points</p>
+	    				</div>
+	    				<h1 class="leaderboard-position">#<%=i+1%></h1>
+	    		</div>
+            <% } %> 
+    	</div>
+    	<p class="leaderboard-divider"></p>
+    	<h1 class="header">Slot of Shame</h1>
+    	<div class="shame">
+	    	<img class="profile-img" src="<%=shame.avatar%>" alt="Slot of shame profile picture">
+	    	<h1 style="margin-bottom: 0px;"><%=shame.name%></h1>
+	    	<p><%=shame.points%> Points</p>
+    	</div>
+    </main>
+    <%- include('partials/footer') %>
+</body>
+</html>

@@ -13,6 +13,7 @@ const helmet = require('helmet');
 const authRoutes = require('./routes/auth');
 const groupRoutes = require('./routes/group');
 const dashboardRoutes = require('./routes/dashboard');
+const leaderboardRoutes = require('./routes/leaderboard');
 
 // Connect to MongoDB Database
 const mongoUrl = process.env.DATABASE;
@@ -56,6 +57,7 @@ app.use((req, res, next) => {
 app.use('/', authRoutes);
 app.use('/group', groupRoutes);
 app.use('/dashboard', dashboardRoutes);
+app.use('/leaderboard', leaderboardRoutes);
 
 app.get('/', (req, res) => {
     res.render('home');
