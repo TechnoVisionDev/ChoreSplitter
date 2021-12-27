@@ -1,20 +1,25 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
+const fetch = require('node-fetch');
 
 // Redirects to the homepage
 module.exports.redirectHome = (req, res) => {
     res.redirect('/');
 };
 
+// Creates a new user account
 module.exports.register = async (req, res) => {
     try {
         // Form validation
-        const {email, password, verify, name, avatar, terms} = req.body;
+        let {email, password, verify, name, avatar, terms} = req.body;
         if (!email || !name || !password || !verify || !terms) {
             throw new Error('*You must fill out all fields to register.');
         }
         if (password !== verify) {
             throw new Error('*The passwords you entered do not match.');
+        }
+        if (!await isImage(avatar)) {
+            avatar = undefined;
         }
 
         // Create new user document
@@ -31,6 +36,7 @@ module.exports.register = async (req, res) => {
     }
 }
 
+// Validates a user account
 module.exports.login = async (req, res) => {
     try {
         // Form validation
@@ -57,8 +63,20 @@ module.exports.login = async (req, res) => {
     }
 }
 
+// Removes session for user
 module.exports.logout = (req, res) => {
     req.session.email = null;
     req.session.group = null;
     res.redirect('/');
+}
+
+// Checks if url is a valid image
+async function isImage(url){
+    try {
+        const res = await fetch(url);
+        const buff = await res.blob();
+        return buff.type.startsWith('image/')
+    } catch (e) {
+        return false;
+    }
 }
