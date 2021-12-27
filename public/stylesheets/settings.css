@@ -1,0 +1,62 @@
+#settings-button {
+	color: white;
+	font-size: 22px;
+	margin-right: 15px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+#settings-body {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.settings-form {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 30px;
+	margin-top: 25px;
+}
+
+.settings-form > label {
+	margin-bottom: 20px;
+}
+
+.settings-form > label > input {
+	margin-top: 5px;
+}
+
+.settings-change-button {
+	background-color: gold;
+	color: black;
+	font-size: 15px;
+	height: 40px;
+	width: 385px;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+}
+
+.settings-change-button:hover {
+	background-color: #edcb09;
+}
+
+.leave-button {
+	background-color: #bb0000;
+	color: white;
+	font-size: 15px;
+	height: 40px;
+	width: 225px;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.leave-button:hover {
+	background-color: #972d20;
+}
