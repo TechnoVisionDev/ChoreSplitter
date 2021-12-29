@@ -14,6 +14,7 @@ const authRoutes = require('./routes/auth');
 const groupRoutes = require('./routes/group');
 const dashboardRoutes = require('./routes/dashboard');
 const leaderboardRoutes = require('./routes/leaderboard');
+const chatRoutes = require('./routes/chat');
 const settingsRoutes = require('./routes/settings');
 
 // Connect to MongoDB Database
@@ -59,6 +60,7 @@ app.use('/', authRoutes);
 app.use('/group', groupRoutes);
 app.use('/dashboard', dashboardRoutes);
 app.use('/leaderboard', leaderboardRoutes);
+app.use('/chat', chatRoutes);
 app.use('/settings', settingsRoutes);
 
 app.get('/', (req, res) => {
