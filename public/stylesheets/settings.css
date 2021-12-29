@@ -6,20 +6,26 @@
 	cursor: pointer;
 }
 
-#settings-body {
+#container {
 	display: flex;
 	justify-content: space-evenly;
+}
+
+#settings-body {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 }
 
 .settings-form {
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 30px;
 	margin-top: 25px;
 }
 
 .settings-form > label {
-	margin-bottom: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .settings-form > label > input {
@@ -49,7 +55,7 @@
 	color: white;
 	font-size: 15px;
 	height: 40px;
-	width: 225px;
+	width: 385px;
 	border: none;
 	border-radius: 3px;
 	cursor: pointer;

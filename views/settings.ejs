@@ -9,10 +9,10 @@
     <main class="center">
     	<h1 class="header">Settings</h1>
     	<p class="sub-header">Make changes to your profile</p>
-    	<div id="settings-body">
+    	<div id="container">
     		<img src="assets/group/decoration1.png" alt="Woman doing chores" id="chores-decoration">
     		<div id="settings-body">
-	    		<form class="settings-form" action="/settings" method="POST">
+	    		<form class="settings-form" action="/settings?_method=PATCH" method="POST">
 	    			<label>
 	    				Change Profile Picture:
 						<input type="text" class="textbox" name="avatar" placeholder="Image URL">
@@ -21,8 +21,6 @@
 	    				Change Name: 
 						<input type="text" class="textbox" name="name" placeholder="Your name">
 	    			</label>
-			   		<p class="divider"></p>
-			   		<button type="submit" name="leave-group" class="leave-button" class="settings-form">Leave Group</button>
 			   		<button type="submit" name="save-settings" class="settings-change-button">Save Changes</button>
 			   		<% if (locals.settingsError) { %>
 			   			<p class="error-message" style="margin-top:15px; margin-left: auto; margin-right: auto;">${settingsError}</p>
@@ -30,6 +28,10 @@
 			   			<p class="error-message" style="visibility: hidden;">invisible</p>
                     <% } %> 
 	    		</form>
+				<p class="divider"></p>
+				<form action="/settings?_method=DELETE" method="POST">
+					<button type="submit" name="leave-group" class="leave-button" class="settings-form">Leave Group</button>
+				</form>
 	    	</div>
 	    	<img src="assets/group/decoration2.png" alt="Man doing chores" id="chores-decoration">
     	</div>

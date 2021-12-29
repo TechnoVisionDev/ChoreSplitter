@@ -3,6 +3,9 @@ const settings = require('../controllers/settings')
 const {isLoggedIn, inGroup} = require('../middleware')
 const router = express.Router();
 
-router.get('/', isLoggedIn, inGroup, settings.renderSettings)
+router.route('/')
+    .get(isLoggedIn, inGroup, settings.renderSettings)
+    .patch(isLoggedIn, settings.save)
+    .delete(isLoggedIn, inGroup, settings.leaveGroup)
 
 module.exports = router;
