@@ -18,7 +18,7 @@ module.exports.register = async (req, res) => {
         if (password !== verify) {
             throw new Error('*The passwords you entered do not match.');
         }
-        if (!await isImage(avatar)) {
+        if (!await module.exports.isImage(avatar)) {
             avatar = undefined;
         }
 

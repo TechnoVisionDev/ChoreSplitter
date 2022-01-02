@@ -1,6 +1,9 @@
 const socket = io();
 const chatForm = document.querySelector('#chat-form');
 const chatbox = document.querySelector('#chat');
+const group = document.querySelector('meta[name=group]').content;
+
+socket.emit('joinRoom', group);
 
 /**
  * Recieves chat history on fresh connection.
@@ -13,6 +16,7 @@ socket.on('chats', (data) => {
  * Recieves messages from server and add them to chatbox.
  */
  socket.on('message', (message) => {
+    console.log(message);
     buildMessage(message);
     chatbox.scrollTop = chatbox.scrollHeight;
 })
@@ -26,8 +30,8 @@ chatForm.addEventListener('submit', (event) => {
 	if (msg) {
 		const name = document.querySelector('meta[name=name]').content;
 		const avatar = document.querySelector('meta[name=avatar]').content;
-		const data = {name: name, avatar: avatar, msg: msg}
-		socket.emit('submit', data);
+		const message = {name: name, avatar: avatar, msg: msg}
+		socket.emit('submit', {message, group});
     }
 	document.querySelector("#msg").value = "";
 });
