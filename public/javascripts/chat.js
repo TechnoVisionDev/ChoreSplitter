@@ -9,7 +9,9 @@ socket.emit('joinRoom', group);
  * Recieves chat history on fresh connection.
  */
 socket.on('chats', (data) => {
-    data.forEach(chat => buildMessage(chat));
+    if (data !== null) {
+        data.forEach(chat => buildMessage(chat));
+    }
 });
 
 /**
