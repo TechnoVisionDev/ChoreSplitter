@@ -55,6 +55,21 @@ app.use((req, res, next) => {
     next();
 })
 
+// Setup Group Chat
+const server = require('http').createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
+
+io.on('connection', (socket) => {
+    // Send chat history when connected
+    socket.emit('chats', []);
+
+    // Accept and broadcast incoming chats
+    socket.on('submit', (msg) => {
+        io.emit('message', msg);
+    });
+});
+
 // Set Page Routes
 app.use('/', authRoutes);
 app.use('/group', groupRoutes);
@@ -82,6 +97,6 @@ app.use((err, req, res, next) => {
 })
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`Serving on port ${port}`)
-})
+});

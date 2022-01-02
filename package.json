@@ -20,6 +20,7 @@
     "method-override": "^3.0.0",
     "mongoose": "^6.1.2",
     "node-fetch": "^2.6.6",
-    "short-unique-id": "^4.4.4"
+    "short-unique-id": "^4.4.4",
+    "socket.io": "^4.4.0"
   }
 }

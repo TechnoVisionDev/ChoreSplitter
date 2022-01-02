@@ -3,12 +3,23 @@
 <head>
 	<%- include('partials/head') %>
     <link rel="stylesheet" href="/stylesheets/chat.css">
+
+    <!-- User data to be accessed in javascript -->
+    <meta name="avatar" content="<%=avatar%>"/>
+    <meta name="name" content="<%=name%>"/>
 </head>
 <body>
 	<%- include('partials/navbar') %>
     <main class="center">
     	<h1 class="header">Group Chat</h1>
+	    <div id="chat" class="chat"></div>
+	    <form id="chat-form">
+			<input type="text" name="msg" id="msg" placeholder="Message"/>
+	        <button id="enter">Enter</button>
+        </form>
     </main>
     <%- include('partials/footer') %>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/chat.js"></script>
 </body>
 </html>
