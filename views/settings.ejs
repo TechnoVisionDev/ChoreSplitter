@@ -23,7 +23,7 @@
 	    			</label>
 			   		<button type="submit" name="save-settings" class="settings-change-button">Save Changes</button>
 			   		<% if (locals.settingsError) { %>
-			   			<p class="error-message" style="margin-top:15px; margin-left: auto; margin-right: auto;">${settingsError}</p>
+			   			<p class="error-message" style="margin-top:15px; margin-left: auto; margin-right: auto;"><%=settingsError%></p>
                     <% } else { %> 
 			   			<p class="error-message" style="visibility: hidden;">invisible</p>
                     <% } %> 

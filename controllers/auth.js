@@ -72,6 +72,7 @@ module.exports.logout = (req, res) => {
 
 // Checks if url is a valid image
 module.exports.isImage = async (url) => {
+    if (!url || url.trim() === '') return false;
     try { 
         const res = await fetch(url);
         const buff = await res.blob();
