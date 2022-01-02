@@ -35,15 +35,8 @@ module.exports.save = catchAsync(async (req, res) => {
 module.exports.leaveGroup = catchAsync(async (req, res) => {
     const group = req.session.group;
     const email = req.session.email;
-    const doc = await Group.findOne({group});
-    const chores = doc.chores;
-    for (let i = 0; i < chores.length; i++) {
-        let choreClaim = chores[i].claimed;
-        if (choreClaim && choreClaim !== '' && choreClaim === email) {
-            await Group.updateOne({group, chores: i}, { $set: { 'chores.$.claimed': '' } });
-        }
-    }
-    await User.updateOne({email}, {$unset: {group: ''}, $set: {points: 0}});
+    await Group.updateOne({group, 'chores.claimed': email}, {$unset: {'chores.$.claimed': 1}})
+    await User.updateOne({email}, {$unset: {group: 1}, $set: {points: 0}});
     delete req.session.group;
     res.redirect('/');
 });
