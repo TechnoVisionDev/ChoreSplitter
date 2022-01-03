@@ -11,7 +11,17 @@ module.exports.renderDashboard = catchAsync(async (req, res) => {
     const avatar = user.avatar || 'https://i.stack.imgur.com/34AD2.jpg';
     const group = req.session.group;
     const doc = await Group.findOne({group});
-    res.render('dashboard', {data: doc.chores, avatar, group, name: user.name, points: user.points});
+
+    const avatars = [];
+    const data = doc.chores;
+    for (let chore of data) {
+        const claim = chore.claimed;
+        if (claim && !(claim in avatars)) {
+            const claimDoc = await User.findOne({email: claim}).lean();
+            avatars[claim] = claimDoc.avatar;
+        }
+    }
+    res.render('dashboard', {data, avatar, group, name: user.name, points: user.points, avatars, email});
 });
 
 // Render add chore form
@@ -36,4 +46,19 @@ module.exports.addChore = async (req, res) => {
     } catch (e) {
         res.render('dashboard/add', {choreError: true});
     }
+};
+
+// Claims a chore as 'in-progress' with user's email
+module.exports.claimChore = (req, res) => {
+    res.redirect('/');
+};
+
+// Finishes a claimed chore to win points
+module.exports.finishChore = (req, res) => {
+    res.redirect('/');
+};
+
+// Deletes a chore from the group dashboard
+module.exports.deleteChore = (req, res) => {
+    res.redirect('/');
 };

@@ -28,19 +28,27 @@
 	    					<p class="chore-data"><%=chore.description%></p>
 	    				</div>
                         <% if (chore.claimed) { %> 
-					    	<img class="claimed-img" src="${avatars[chore.claimed]}" alt="A user's profile picture">
+					    	<img class="claimed-img" src="<%=avatars[chore.claimed]%>" alt="A user's profile picture">
                         <% } %>
 			    		<aside>
 			    			<p class="chore-data"><%=chore.points%> Points</p>
-			    			<form id="chore-buttons" action="chore" method="POST">
+			    			<div id="chore-buttons" action="chore" method="POST">
                                 <% if (!chore.claimed) { %> 
-			    					<button id="claim-chore-button" name="claim" value="<%=i%>"><i class="fas fa-user-check"></i></button>
-			    					<button id="delete-chore-button" name="delete" value="<%=i%>"><i class="fas fa-times"></i></button>
-                                <% } else if (chore.claimed === email) { %>
-			    					<button id="finish-chore-button" name="finish" value="<%=i%>"><i class="fas fa-check"></i></button>
-			    					<button id="delete-chore-button" name="unclaim" value="<%=i%>"><i class="fas fa-times"></i></button>
+									<form action="/dashboard/claim" method="POST">
+										<button id="claim-chore-button" name="claim" value="<%=i%>"><i class="fas fa-user-check"></i></button>
+									</form>
+									<form action="/dashboard/delete?_method=DELETE" method="POST">
+			    						<button id="delete-chore-button" name="delete" value="<%=i%>"><i class="fas fa-times"></i></button>
+									</form>
+								<% } else if (chore.claimed === email) { %>
+									<form action="/dashboard/finish" method="POST">
+			    						<button id="finish-chore-button" name="finish" value="<%=i%>"><i class="fas fa-check"></i></button>
+									</form>
+									<form action="/dashboard/delete?_method=DELETE" method="POST">
+			    						<button id="delete-chore-button" name="delete" value="<%=i%>"><i class="fas fa-times"></i></button>
+									</form>
                                 <% } %>
-			    			</form>
+			    			</div>
 			    		</aside>
 	    			</div>
                 <% } %>
