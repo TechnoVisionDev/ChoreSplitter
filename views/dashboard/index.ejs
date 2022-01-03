@@ -35,17 +35,17 @@
 			    			<div id="chore-buttons" action="chore" method="POST">
                                 <% if (!chore.claimed) { %> 
 									<form action="/dashboard/claim" method="POST">
-										<button id="claim-chore-button" name="claim" value="<%=i%>"><i class="fas fa-user-check"></i></button>
+										<button id="claim-chore-button" name="index" value="<%=i%>"><i class="fas fa-user-check"></i></button>
 									</form>
 									<form action="/dashboard/delete?_method=DELETE" method="POST">
-			    						<button id="delete-chore-button" name="delete" value="<%=i%>"><i class="fas fa-times"></i></button>
+			    						<button id="delete-chore-button" name="index" value="<%=i%>"><i class="fas fa-times"></i></button>
 									</form>
 								<% } else if (chore.claimed === email) { %>
 									<form action="/dashboard/finish" method="POST">
-			    						<button id="finish-chore-button" name="finish" value="<%=i%>"><i class="fas fa-check"></i></button>
+			    						<button id="finish-chore-button" name="index" value="<%=i%>"><i class="fas fa-check"></i></button>
 									</form>
 									<form action="/dashboard/delete?_method=DELETE" method="POST">
-			    						<button id="delete-chore-button" name="delete" value="<%=i%>"><i class="fas fa-times"></i></button>
+			    						<button id="delete-chore-button" name="index" value="<%=i%>"><i class="fas fa-times"></i></button>
 									</form>
                                 <% } %>
 			    			</div>

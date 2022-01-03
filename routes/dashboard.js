@@ -13,6 +13,6 @@ router.post('/claim', isLoggedIn, inGroup, dashboard.claimChore);
 
 router.post('/finish', isLoggedIn, inGroup, dashboard.finishChore);
 
-router.post('/delete', isLoggedIn, inGroup, dashboard.deleteChore);
+router.delete('/delete', isLoggedIn, inGroup, dashboard.deleteChore);
 
 module.exports = router;

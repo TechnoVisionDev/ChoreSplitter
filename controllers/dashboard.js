@@ -49,16 +49,38 @@ module.exports.addChore = async (req, res) => {
 };
 
 // Claims a chore as 'in-progress' with user's email
-module.exports.claimChore = (req, res) => {
-    res.redirect('/');
+module.exports.claimChore = async (req, res) => {
+    try { 
+        const {index} = req.body;
+        const {email, group} = req.session;
+        const update = { '$set': {} };
+        update['$set'][`chores.${index}.claimed`] = email;
+        await Group.updateOne({group}, update);
+    } catch (e) {console.log(e)}
+    res.redirect('/dashboard');
 };
 
 // Finishes a claimed chore to win points
-module.exports.finishChore = (req, res) => {
-    res.redirect('/');
+module.exports.finishChore = async (req, res) => {
+    try {
+        const {index} = req.body;
+        const {email, group} = req.session;
+        const award = (await Group.findOne({group}).lean()).chores[index].points;
+        await User.updateOne({email}, {$inc: {points: award}});
+        return module.exports.deleteChore(req, res);
+    } catch (e) {console.log(e)}
+    res.redirect('/dashboard');
 };
 
 // Deletes a chore from the group dashboard
-module.exports.deleteChore = (req, res) => {
-    res.redirect('/');
+module.exports.deleteChore = async (req, res) => {
+    try {
+        const {index} = req.body;
+        const group = req.session.group;
+        const unset = { '$unset': {} };
+        unset['$unset'][`chores.${index}`] = 1;
+        await Group.updateOne({group}, unset) 
+        await Group.updateOne({group}, {$pull : {"chores" : null}})
+    } catch (e) {console.log(e)}
+    res.redirect('/dashboard');
 };
