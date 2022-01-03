@@ -3,10 +3,10 @@
         <a href="/" id="nav-brand">ChoreSplitter!</a>
       <div id="nav-wrapper">
           <% if (session.email) { %> 
-            <i class="nav-btn fas fa-clipboard-list" onclick="window.location='dashboard';"></i>
-            <i class="nav-btn far fa-chart-bar" onclick="window.location='leaderboard';"></i>
-            <i class="nav-btn far fa-comments" onclick="window.location='chat';"></i>
-            <i class="nav-btn fas fa-cog" onclick="window.location='settings';"></i>
+            <a href="/dashboard"><i class="nav-btn fas fa-clipboard-list"></i></a>
+            <a href="/leaderboard"><i class="nav-btn far fa-chart-bar"></i></a>
+            <a href="/chat"><i class="nav-btn far fa-comments"></i></a>
+            <a href="/settings"><i class="nav-btn fas fa-cog"></i></a>
             <button id="login-btn" onclick="window.location='logout';">Logout</button>
           <% } else { %> 
             <button id="login-btn" onclick="window.location='login';">Login</button>
